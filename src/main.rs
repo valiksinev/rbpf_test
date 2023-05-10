@@ -9,16 +9,16 @@ fn main() {
         Err(e) => panic!("Error: {:?}", e),
     };
 
-    let text_scn = match file.get_section(".text") {
+    let text_section = match file.get_section(".text") {
         Some(s) => s,
-        None => panic!("Failed to look up .classifier section"),
+        None => panic!("Failed to look up .text section"),
     };
     let data_section = file.get_section(".data").map(|x|  {
         let s = &x.data;
         s.as_slice()
     });
 
-    let prog = &text_scn.data;
+    let prog = &text_section.data;
 
     let mut vm = rbpf::EbpfVmFixedMbuff::new(
         Some(prog),
