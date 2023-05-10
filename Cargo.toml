@@ -1,0 +1,9 @@
+[package]
+name = "rbpf_test"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+rbpf = { git = "https://github.com/valiksinev/rbpf.git" }
+elf = "0.0.10"
